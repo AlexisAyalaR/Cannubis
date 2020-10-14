@@ -5,7 +5,6 @@ Funcion que genera Divs dependiendo del numero de productos que haya
 Parametros: numProd: Número de productos
 Return: 
 */
-
 function generaProductos(nom, pr, cant, esp, desc){
 		var div = document.createElement('div');
   		div.id = 'prodId';
@@ -55,32 +54,35 @@ $(document).ready(function(){
     });
 });
 
-
+/*
+Funcion que carga los valores de los productos
+Parametros: 
+Return: Divs con productos 
+*/
+var load = 0;
 $(document).ready(function(){
-    $.get("/getProductos", function(data, status){
-    	var prod = data.productos;
-    	var n = data.productos.length;
-    	for (var i = 0; i < n; i++) {
-    		var nombre = prod[i].nombre;
-    		var precio = prod[i].precio;
-    		var cantidad = prod[i].cantidad;
-    		var especificaciones = prod[i].especificaciones;
-    		var descripcion = prod[i].descripcion;
+  $("#loadProductos").click(function(){
+    if (load == 0) {
+      load = load + 1;
+      $.get("/getProductos", function(data, status){
+      	var prod = data.productos;
+      	var n = data.productos.length;
+      	for (var i = 0; i < n; i++) {
+      		var nombre = prod[i].nombre;
+      		var precio = prod[i].precio;
+      		var cantidad = prod[i].cantidad;
+      		var especificaciones = prod[i].especificaciones;
+      		var descripcion = prod[i].descripcion;
 
-    		generaProductos(nombre, precio, cantidad, especificaciones, descripcion);
-
-    	};
-
-    	
-
-    });
+      		generaProductos(nombre, precio, cantidad, especificaciones, descripcion);
+        };
+      });
+    };  	
+  });
 });
 
 
-/*
-    	var prods = JSON.stringify(data.productos[0]);
-    	var x = document.getElementById('json');
-    	x.innerHTML = prods;
-*/
+
+
 
 

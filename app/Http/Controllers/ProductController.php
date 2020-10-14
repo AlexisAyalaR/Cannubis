@@ -8,14 +8,10 @@ use App\producto;
 
 class ProductController extends Controller
 {
-    function load_product_page(){
-    	return view('product');
-    }
 
-    function prueba(){
-    	return redirect()->back();
+    function load_pruebas(){
+        return view('product');
     }
-
 
     /* 
     * Funcion que se encarga de registrar un producto
@@ -29,7 +25,6 @@ class ProductController extends Controller
     	$cantidad = $req->input('cantidad');
     	$esp = $req->input('especificaciones');
     	$desc = $req->input('descripcion');
-    	//FALTA IMAGEN
 
     	try{
     		producto::agregaProducto($nombre, $precio, $cantidad, $esp, $desc);
@@ -52,7 +47,6 @@ class ProductController extends Controller
 
         //VALIDADO
         $nombre = $_POST['productoActual'];
-        //$nombre = $req->input('nombreProds');
 
         if($nombre == ''){
             session(['eliminaUsuario' => -1]);
@@ -72,13 +66,21 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-
+    /* 
+    * Funcion que se encarga de regresar nombres de productos
+    * Parametros: 
+    * Return: JSON nombresProd
+    */
     public function cargaNombresProductos(){
     	$nombres = producto::getNombresProductos();
     	return \Response::json(["nombres" => $nombres], 200);
     }
 
-
+    /* 
+    * Funcion que se encarga de la información de productos
+    * Parametros: 
+    * Return: JSON infoProd
+    */
     public function cargaProductos(){
     	$productos = producto::getProductos();
     	return \Response::json(["productos" => $productos], 200);

@@ -7,17 +7,29 @@ use Input;
 use Hash;
 use DB;
 
+//Usar todo creando Object Programming
+
 class producto extends Model
 {
     /* 
-    * Funcion que se encarga de dar la relación entre usuario y horario
+    * Funcion que se encarga de dar la relación entre usuario y producto
     * Parametros:
-    * Return: los horarios de un usuario dado
+    * Return: el usuario de cada producto
     */
 	public function usuario(){
 
 		return $this->belongsTo(Usuario::class);
 	}
+
+    /* 
+    * Funcion que se encarga de dar la relación entre producto e imagen
+    * Parametros:
+    * Return: las imágenes de cada producto
+    */
+    public function imagen(){
+
+        return $this->hasMany(imagen::class);
+    }
 
     /* 
     * Funcion que se encarga de agregar un producto a la base de datos

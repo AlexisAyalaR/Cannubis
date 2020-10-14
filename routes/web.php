@@ -16,8 +16,21 @@ Ruta que carga la función index en Homecontroller
 Carga view index.php
  */
 Route::get('/', 'HomeController@index');
+/*
+Ruta que carga la función load_product_page 
+Carga view usuario.php
+ */
+Route::get('/usuario', 'UsuarioController@load_product_page');
+/*
+Ruta que carga la función load_product_page 
+Carga view usuarioAdmin.php
+ */
+Route::get('/usuarioAdmin', 'UsuarioController@load_usuarioAdmin');
 
-Route::get('/mota', 'ProductController@load_product_page');
+
+
+Route::get('/pruebas', 'ProductController@load_pruebas');
+
 
 
 /*Registra un producto nuevo
@@ -30,12 +43,27 @@ Route::post('/eliminaProducto', ["uses" => 'ProductController@eliminaProducto'])
 
 /*Carga el dropdown de los productos
 FALTA HTML DISEÑO*/
-//HACERLO POST
 Route::get('/getNombresProductos', 'ProductController@cargaNombresProductos');
 
-
-
-
+/*Carga la información de los productos generando divs
+FALTA HTML DISEÑO*/
 Route::get('/getProductos', 'ProductController@cargaProductos');
+
+
+
+
+Route::post('/registraImagen', 'ImageController@registraImagen');
+
+
+
+
+
+Route::get('/getEmailsUsuarios', 'UsuarioController@cargaEmailsUsuarios');
+
+
+Route::post('/registraUsuario', 'UsuarioController@registraUsuario');
+
+
+Route::post('/eliminaUsuario', 'UsuarioController@eliminaUsuario');
 
 
