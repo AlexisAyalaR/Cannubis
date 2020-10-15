@@ -7,8 +7,6 @@ use Input;
 use Hash;
 use DB;
 
-//Usar todo creando Object Programming
-
 class producto extends Model
 {
     /* 
@@ -46,7 +44,7 @@ class producto extends Model
     /* 
     * Funcion que se encarga de eliminar un producto de la base de datos
     * Parametros: El nombre del producto [PELIGRO: QUE MAS DE DOS PRODUCTOS TENGAN EL MISMO NOMBRE]
-    * Return: 
+    * Return: el id del producto que borró
     */
     public static function eliminaProducto($nombre){
 
@@ -57,18 +55,37 @@ class producto extends Model
         return $id;
     }
 
+    /* 
+    * Funcion que se encarga de buscar todos los productos
+    * Parametros: 
+    * Return: información de los productos
+    */
     public static function getProductos(){
         $productos = DB::table('producto')->get();
         
         return $productos;
     }
 
-
-
+    /* 
+    * Funcion que se encarga de buscar los nombres de los productos
+    * Parametros: 
+    * Return: todos los nombres de los productos
+    */
     public static function getNombresProductos(){
         $nombres = DB::table('producto')->select('nombre')->get();
         
         return $nombres;
+    }
+
+    /* 
+    * Funcion que se encarga de buscar el id del producto seleccionado
+    * Parametros: nombre del producto a buscar
+    * Return: id del producto
+    */
+    public static function getNombreById($nombre){
+        $id = DB::table('producto')->select('id')->where('nombre', $nombre)->get();
+        
+        return $id;
     }
 
 }

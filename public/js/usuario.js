@@ -18,19 +18,13 @@ function validaInputs(){
   var c = document.getElementById('Pass').value;
   var cc = document.getElementById('CPass').value;
   if (c == cc) {
+    /*alert('Alta registrada');*/
     document.getElementById("regForm").submit();
+    data = json_encode(session(['registraUsuario']));
+    alert(data);
   } else{
+    alert('Error al agregar al usuario');
     return false;
   };
   
-}
-
-function alerta(){
-    var c = document.getElementById('Pass').value;
-    var cc = document.getElementById('CPass').value;
-    if (c != cc) {
-        return alert('Nel prro');
-    }else{
-        return alert('Si prro')
-    };
 }

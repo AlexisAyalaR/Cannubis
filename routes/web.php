@@ -32,6 +32,8 @@ Route::get('/usuarioAdmin', 'UsuarioController@load_usuarioAdmin');
 Route::get('/pruebas', 'ProductController@load_pruebas');
 
 
+Route::get('/prueba', 'ProductController@cargaImagenes');
+
 
 /*Registra un producto nuevo
 FALTA HTML DISEÑO*/
@@ -49,9 +51,8 @@ Route::get('/getNombresProductos', 'ProductController@cargaNombresProductos');
 FALTA HTML DISEÑO*/
 Route::get('/getProductos', 'ProductController@cargaProductos');
 
-
-
-
+/*Sube imágen de producto seleccionado
+FALTA HTML DISEÑO*/
 Route::post('/registraImagen', 'ImageController@registraImagen');
 
 

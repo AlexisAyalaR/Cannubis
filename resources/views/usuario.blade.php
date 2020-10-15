@@ -14,6 +14,8 @@
 
 	<h1>Usuario</h1> 
 
+	<h3>Agregar un nuevo producto:</h3>
+
 	<form action="/registraProducto" method="post">
 					<div class="">
 						<br>
@@ -47,28 +49,22 @@
 					</div>
 		</form>
 
-			
-		<form action="/eliminaProducto" method="post">
-			<div class="">
-				@csrf
-				<br>
-				<br>
-				<select id="nombreProds" name= "productoActual">
-					<option value="" name="productoActual">Productos</option>
-				</select>
-				<br>
-				<button ><i aria-hidden="true"></i> Eliminar Producto</button>
-				<br>				
-			</div>
-		</form>
+		<br>
+		<br>
+		<br>
 
-		<br>
-		<br>
-		<br>
-		<p>Todavía no jala</p>
+	<h3>Agregar imágenes a productos: </h3>
+
+
 		<form id="file-upload-form" class="uploader" action="/registraImagen" method="post" accept-charset="utf-8" enctype="multipart/form-data">
         @csrf
-	        <input id="file-upload" type="file" name="image">
+        	<select id= "nombreProdImgs" name= "prodImg">
+        		<option name= "prodImg">Producto</option>
+        	</select>
+			<br>
+			<br>
+	        <input id="file-upload" type="file" name="image" onchange="loadFile(event)">
+	        <img id="output"/>
 	        <label for="file-upload" id="file-drag">
 	        	<br>
 	        	<br>
@@ -77,6 +73,27 @@
     	</form>
 
     	<br>
+		<br>
+
+	<h3>Borrar un producto:</h3>
+
+		<form action="/eliminaProducto" method="post">
+			<div class="">
+				@csrf
+				<select id="nombreProds" name= "productoActual">
+					<option value="" name="productoActual">Productos</option>
+				</select>
+				<br>
+				<br>
+				<button ><i aria-hidden="true"></i> Eliminar Producto</button>
+				<br>	
+				<br>			
+			</div>
+		</form>
+
+		
+		<br>
+		<br>
 		<br>
 		
 		<form action="/">

@@ -10,7 +10,7 @@ use DB;
 class imagen extends Model
 {
     protected $table = 'imagen';
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'idProducto'];
     /* 
     * Funcion que se encarga de dar la relación entre producto e imágenes
     * Parametros:
@@ -21,6 +21,11 @@ class imagen extends Model
         return $this->belongsTo(producto::class);
     }
 
+    public static function getImagen($prodId){
+        $nombres = DB::table('imagen')->select('nombre')->where('idProducto', $prodId)->get();
+        
+        return $nombres;
+    }
 
 
 }

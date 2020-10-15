@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\producto;
 
+use App\imagen;
+
 class ProductController extends Controller
 {
 
@@ -82,8 +84,42 @@ class ProductController extends Controller
     * Return: JSON infoProd
     */
     public function cargaProductos(){
+        $productos = producto::getProductos();
+        $prodFor = json_decode(json_encode($productos), true);
+        $n = count($prodFor);
+            
+        $imagenes = array();
+
+        for ($i=0; $i < $n; $i++) { 
+            $imagenes[$i] = imagen::getImagen($prodFor[$i]['id']);
+        }
+
+        $productos = producto::getProductos();
+
+        return \Response::json(["productos" => $productos, "imagenes" => $imagenes], 200);
+
+        /*
     	$productos = producto::getProductos();
+
     	return \Response::json(["productos" => $productos], 200);
+    */
+    }
+
+    public function cargaImagenes(){
+        $productos = producto::getProductos();
+        $prodFor = json_decode(json_encode($productos), true);
+        $n = count($prodFor);
+            
+        $imagenes = array();
+
+        for ($i=0; $i < $n; $i++) { 
+            $imagenes[$i] = imagen::getImagen($prodFor[$i]['id']);
+        }
+
+        $productos = producto::getProductos();
+
+        return \Response::json(["productos" => $productos, "imagenes" => $imagenes], 200);
+
     }
 
 

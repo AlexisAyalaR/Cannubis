@@ -5,7 +5,7 @@
 
 <head>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="js/producto.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
 	<title>Cannubis</title>
 
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,19 +34,10 @@
 		<br>
 		<br>
 
-		<form action="/prueba">
-    		<input type="submit" value="prueba" />
-		</form>
-
 	
+	<h1>Productos</h1>
 
-				<br>
-				<br>
-				<br>
-				<br>
-			<h1>Productos</h1>
-
-			<button type="submit" id="loadProductos">Carga productos</button>
+		<button type="submit" id="loadProductos">Carga productos</button>
 
 
 </body>

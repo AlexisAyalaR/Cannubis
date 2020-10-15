@@ -6,6 +6,7 @@
 	<title>Cannubis</title>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/usuario.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -40,7 +41,7 @@
 						<input required type="password" name="CPass" id="CPass" value="123">
 						
 						<br>
-						<button onclick="alerta(); return validaInputs();"><i class="fa fa-paper-plane" aria-hidden="true"></i> Enviar</button>
+						<button onclick="return validaInputs();"><i class="fa fa-paper-plane" aria-hidden="true"></i> Enviar</button>
 						<br>
 					</div>
 		</form>
