@@ -5,7 +5,7 @@
 <head>
 	<title>Cannubis</title>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="js/producto.js"></script>
+	<script type="text/javascript" src="js/usuario.js"></script>
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -53,43 +53,68 @@
 		<br>
 		<br>
 
-	<h3>Agregar imágenes a productos: </h3>
 
-
-		<form id="file-upload-form" class="uploader" action="/registraImagen" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-        @csrf
-        	<select id= "nombreProdImgs" name= "prodImg">
-        		<option name= "prodImg">Producto</option>
-        	</select>
-			<br>
-			<br>
-	        <input id="file-upload" type="file" name="image" onchange="loadFile(event)">
-	        <img id="output"/>
-	        <label for="file-upload" id="file-drag">
-	        	<br>
-	        	<br>
-	            <button type="submit" class="btn btn-success">Submit</button>
-	        </label>
-    	</form>
-
-    	<br>
-		<br>
-
-	<h3>Borrar un producto:</h3>
-
-		<form action="/eliminaProducto" method="post">
+	<h3>Editar un producto</h3>
+	<form id="formCarga" method="get" action="{{ URL('/usuario')}}">
 			<div class="">
-				@csrf
-				<select id="nombreProds" name= "productoActual">
-					<option value="" name="productoActual">Productos</option>
+				<select id="nombreProds" name= "nombre">
+					<option value="" name="">Productos</option>
 				</select>
 				<br>
 				<br>
-				<button ><i aria-hidden="true"></i> Eliminar Producto</button>
+				<button type="submit" id="loadProducto">Carga producto</button>
+				<input type="hidden" name="success" value="">
 				<br>	
 				<br>			
 			</div>
 		</form>
+
+		<br>
+
+		<form action="/eliminaProducto" method="post">		
+			<div id="productoBorrar">
+				<form id="formEdit" action="/editarProducto" method="post">
+					@csrf
+					<div id="productoAEditarAfuera">
+						<div id="productoAEditarAdentro">
+
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</form>
+
+		<br>
+
+		<form id="file-upload-form" class="uploader" action="/registraImagen" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+        @csrf
+			
+			<img id="output"/>
+	        <label for="file-upload" id="file-drag">
+	        <br>
+	        <br>
+	        <div id="divCargaImgsFuera">
+		        <div id="divCargaImgsDentro">
+			       	
+		       	</div>
+		    </div>
+	       	</label>
+	      
+    	</form>
+
+    	<br>
+    	<br>
+
+		<form action="/eliminaImagen" method="post">
+			@csrf
+			<div id="imagenABorrarFuera">
+				<div id="imagenABorrar">
+
+				</div>
+			</div>
+		</form>
+
 
 		
 		<br>

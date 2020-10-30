@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Input;
 use Hash;
 use DB;
+use App\imagen;
 
 class producto extends Model
 {
@@ -67,6 +68,17 @@ class producto extends Model
     }
 
     /* 
+    * Funcion que se encarga de buscar un producto en específico
+    * Parametros: Nombre del producto
+    * Return: información de los productos
+    */
+    public static function getProducto($nombre){
+        $producto = DB::table('producto')->where('nombre', $nombre)->get();
+        
+        return $producto;
+    }
+
+    /* 
     * Funcion que se encarga de buscar los nombres de los productos
     * Parametros: 
     * Return: todos los nombres de los productos
@@ -86,6 +98,16 @@ class producto extends Model
         $id = DB::table('producto')->select('id')->where('nombre', $nombre)->get();
         
         return $id;
+    }
+
+    public static function editaProducto($nom, $prec, $cant, $esp, $desc){
+        
+        $nombre = DB::table('producto')
+        ->where('nombre', $nom)  // find your user by their email
+        ->limit(1)  // optional - to ensure only one record is updated.
+        ->update(array('precio' => $prec, 'cantidad' => $cant, 'especificaciones' => $esp, 'descripcion' => $desc));  
+
+        return $nombre;
     }
 
 }
