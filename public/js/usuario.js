@@ -1,5 +1,15 @@
 
 /*
+AJAX que, cuando cambia el dropdown de los edit, manda el form
+*/
+$(document).ready(function() {
+    document.getElementById("loadProducto").style.display = "none";
+    $('#nombreProds').on('change', function() {
+        document.getElementById("loadProducto").click();
+    });
+});
+
+/*
 Funcion que carga el dropdown de los productos
 Parametros: 
 Return: 

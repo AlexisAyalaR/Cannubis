@@ -37,6 +37,11 @@ Ruta que carga la función load_product_page
 Carga view productos.php
  */
 Route::get('/pruebas', 'ProductController@load_pruebas');
+/*
+Ruta que manda un mail con dudas
+Se queda en index.php
+*/
+Route::post('enviaMail', 'mailController@envia');
 
 
 

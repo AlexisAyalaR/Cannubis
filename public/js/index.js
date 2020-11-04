@@ -4,10 +4,7 @@ Funcion que genera Divs dependiendo del numero de productos que haya
 Parametros: numProd: Número de productos
 Return: 
 */
-function generaProductos(nom, pr, cant, esp, desc, img){
-		var div = document.createElement('div');
-  		div.id = 'prodId';
-  		div.className = 'prodClass';
+function generaProductos(nom, pr, cant, esp, desc, img, div){
 
   		var h1 = document.createElement('h1');
   		h1.innerHTML = "Producto: " + nom;
@@ -41,8 +38,6 @@ function generaProductos(nom, pr, cant, esp, desc, img){
       for (var j = 0; j < n; j++) {
         div.appendChild(arrayImg[j]);
       };
-  		
-  		document.body.appendChild(div);
 };
 
 /*
@@ -52,7 +47,6 @@ Return: Divs con productos
 */
 var load = 0;
 $(document).ready(function(){
-  $("#loadProductos").click(function(){
     if (load == 0) {
       load = load + 1;
       $.get("/getProductos", function(data, status){
@@ -72,11 +66,11 @@ $(document).ready(function(){
           for (var j = 0; j < m; j++) {
             imagenes.push(img[j].nombre);
           };
-          generaProductos(nombre, precio, cantidad, especificaciones, descripcion, imagenes);
+          var div = document.getElementById("productosIndex");
+          generaProductos(nombre, precio, cantidad, especificaciones, descripcion, imagenes, div);
         };
       });
     };    
-  });
 });
 
 

@@ -36,7 +36,40 @@
 	
 	<h1>Productos</h1>
 
-		<button type="submit" id="loadProductos">Carga productos</button>
+	<div id="productosIndex">
+		
+	</div>
+
+	<br>
+	<br>
+
+	<h1>Acerca de nosotros</h1>
+	<p>Si tienes alguna duda mandanos un mail y te respondemos lo antes posible:</p>
+
+	<form action="/enviaMail" method="post">
+		<div class="">
+			<br>
+			@csrf
+
+			<label><i aria-hidden="true"></i> <b>Teléfono</b></label>
+			<input required type="number" name="tel" value="">
+
+			<br>
+
+			<label><i aria-hidden="true"></i> <b>Mail</b></label>
+			<input required type="text" name="email" value="">
+						
+			<br>
+
+			<label><i aria-hidden="true"></i> <b>Especificación</b></label>
+			<textarea required type="text" rows="5" name="esp"></textarea>
+						
+			<br>
+
+			<button><i aria-hidden="true"></i> Enviar</button>
+			<br>
+		</div>
+	</form>
 
 
 </body>

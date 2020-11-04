@@ -60,16 +60,9 @@
 				<select id="nombreProds" name= "nombre">
 					<option value="" name="">Productos</option>
 				</select>
-				<br>
-				<br>
-				<button type="submit" id="loadProducto">Carga producto</button>
-				<input type="hidden" name="success" value="">
-				<br>	
-				<br>			
+				<button type="submit" id="loadProducto">Carga producto</button>	
 			</div>
 		</form>
-
-		<br>
 
 		<form action="/eliminaProducto" method="post">		
 			<div id="productoBorrar">
@@ -84,8 +77,6 @@
 				</form>
 			</div>
 		</form>
-
-		<br>
 
 		<form id="file-upload-form" class="uploader" action="/registraImagen" method="post" accept-charset="utf-8" enctype="multipart/form-data">
         @csrf
@@ -103,7 +94,6 @@
 	      
     	</form>
 
-    	<br>
     	<br>
 
 		<form action="/eliminaImagen" method="post">
