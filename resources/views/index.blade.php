@@ -74,6 +74,7 @@
 		</div>
 	</form>
 
+	@include('sweetalert::alert')
 
 </body>
 

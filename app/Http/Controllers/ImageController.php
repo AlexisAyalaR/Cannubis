@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\imagen;
 use App\producto;
+use Alert;
 
 class ImageController extends Controller
 {
@@ -41,7 +42,7 @@ class ImageController extends Controller
     	}
         
     	$imagen->save();
-
+        Alert::image('Alta aceptada','Imagen agregada','/img/'.$filename,'110px','110px');
     	return redirect()->back();
     }
 

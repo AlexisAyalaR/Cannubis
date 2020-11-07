@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\usuario;
 
+use Alert;
+
 
 class UsuarioController extends Controller
 {
@@ -37,11 +39,9 @@ class UsuarioController extends Controller
 
     	}catch(\Exception $e){
     		\Log::info('Error getInfo: '.$e);
-            session(['registraUsuario' => -1]);
             return redirect()->back();
     	}
-        session(['registraUsuario' => 1]);
-
+        Alert::success('Alta realizada', 'Usuario agregado');
         return redirect()->back();
     }
 
@@ -70,6 +70,7 @@ class UsuarioController extends Controller
 
         }
         session(['eliminaUsuario' => 1]);
+
         return redirect()->back()->with('alert', 'Deleted!');
     }
 

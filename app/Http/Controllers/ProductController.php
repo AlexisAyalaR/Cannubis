@@ -8,6 +8,8 @@ use App\producto;
 
 use App\imagen;
 
+use Alert;
+
 
 class ProductController extends Controller
 {
@@ -37,10 +39,9 @@ class ProductController extends Controller
 
     	}catch(\Exception $e){
     		\Log::info('Error getInfo: '.$e);
-            session(['registraProducto' => -1]);
             return redirect()->back();
     	}
-        session(['registraProducto' => 1]);
+        Alert::success('Alta realizada', 'Producto agregado');
         return redirect()->back();
     }
 

@@ -117,7 +117,7 @@
     		<input type="submit" value="Regresa" />
 		</form>
 
-
+		@include('sweetalert::alert')
 </body>
 
 </html>
