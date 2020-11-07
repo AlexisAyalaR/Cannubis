@@ -64,17 +64,21 @@
 			</div>
 		</form>
 
-		<form action="/eliminaProducto" method="post">		
-			<div id="productoBorrar">
-				<form id="formEdit" action="/editarProducto" method="post">
-					@csrf
-					<div id="productoAEditarAfuera">
-						<div id="productoAEditarAdentro">
+		<form action="/editarProducto" method="post">	
+				@csrf
+				<div id="productoAEditarAfuera">
+					<div id="productoAEditarAdentro">
 
-
-						</div>
 					</div>
-				</form>
+				</div>
+		</form>
+
+		<form action="/eliminaProducto" method="post">
+			@csrf
+			<div id="productoAEliminarFuera">
+				<div id="productoAEliminarDentro">
+
+				</div>
 			</div>
 		</form>
 
@@ -96,16 +100,14 @@
 
     	<br>
 
-		<form action="/eliminaImagen" method="post">
-			@csrf
+    	<form action="/actionImagen" method="get">
+			
 			<div id="imagenABorrarFuera">
 				<div id="imagenABorrar">
 
 				</div>
 			</div>
 		</form>
-
-
 		
 		<br>
 		<br>

@@ -26,5 +26,5 @@ function validaInputs(){
     alert('Error al agregar al usuario');
     return false;
   };
-  
+
 }

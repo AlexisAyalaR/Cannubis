@@ -34,14 +34,23 @@ Carga view usuarioAdmin.php
 Route::get('/usuarioAdmin', 'UsuarioController@load_usuarioAdmin');
 /*
 Ruta que carga la función load_product_page 
-Carga view productos.php
+Carga view usuario.php
  */
-Route::get('/pruebas', 'ProductController@load_pruebas');
+Route::get('/productos', 'ProductController@load_producto_page');
 /*
 Ruta que manda un mail con dudas
 Se queda en index.php
 */
-Route::post('enviaMail', 'mailController@envia');
+Route::post('/enviaMail', 'mailController@envia');
+/*
+Carga los datos de un producto en específico
+FALTA DISEÑO HTML*/
+Route::get('/productos/{nombre}', 'ProductController@load_producto_page');
+/*
+Ruta que carga la función load_product_page 
+Carga view productos.php
+ */
+Route::get('/pruebas', 'ProductController@load_pruebas');
 
 
 
@@ -74,7 +83,12 @@ Route::get('/getInfoProducto/{nombre}', 'ProductController@cargaProducto');
 Elimina una imagen
 FALTA DISEÑO HTML**/
 Route::post('/eliminaImagen', 'ImageController@eliminaImagen');
+/*
+Establece la imágen principal de un producto
+FALTA DISEÑO HTML**/
+//Route::post('setImagenPrincipal', 'ImageController@setImagenPrincipal');
 
+Route::get('/actionImagen', 'ImageController@setAction');
 
 
 //USUARIOADMIN
@@ -92,6 +106,11 @@ FALTA DISEÑO HTML*/
 Route::post('/eliminaUsuario', 'UsuarioController@eliminaUsuario');
 
 
+
+//PRODUCTOS
+/*
+
+*/
 
 
 

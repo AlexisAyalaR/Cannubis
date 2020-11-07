@@ -31,6 +31,15 @@ class producto extends Model
     }
 
     /* 
+    * Funcion que se encarga de dar la relación entre producto e imagenPrincipal
+    * Parametros:
+    * Return: el producto de cada imagen
+    */
+    public function imagenPrincipal(){
+
+        return $this->hasMany(imagenPrincipal::class);
+    }
+    /* 
     * Funcion que se encarga de agregar un producto a la base de datos
     * Parametros: Los datos del usuario a agregar
     * Return: 

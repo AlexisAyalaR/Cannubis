@@ -11,6 +11,9 @@ use App\imagen;
 
 class ProductController extends Controller
 {
+    function load_producto_page(){
+        return view('producto');
+    }
 
     function load_pruebas(){
         return view('product');
@@ -105,7 +108,7 @@ class ProductController extends Controller
         $productos = producto::getProductos();
         $prodFor = json_decode(json_encode($productos), true);
         $n = count($prodFor);
-            
+
         $imagenes = array();
 
         for ($i=0; $i < $n; $i++) { 

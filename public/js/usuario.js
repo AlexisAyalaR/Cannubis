@@ -73,9 +73,10 @@ $(document).ready(function(){
         var divFuera = document.getElementById('productoAEditarAfuera');
         reemplazaDivs(divFuera, divDentro, "productoAEditarAdentro");
 
-        //Reemplazamos boton de borrar
-        var buttonDelete = document.getElementById('borrarProd');
-        buttonDelete.parentNode.removeChild(buttonDelete);
+        //Reemplazamos divs de borrar
+        var divDentro = document.getElementById('productoAEliminarDentro');
+        var divFuera = document.getElementById('productoAEliminarFuera');
+        reemplazaDivs(divFuera, divDentro, "productoAEliminarDentro");
 
 
         //Reemplazamos divs de imagenes a cargar
@@ -171,9 +172,10 @@ function generaEditProducto(nom, prec, cant, esp, desc){
     tabla.appendChild(tr2);
 
     //Agregamos el boton para editar
-    var b = document.createElement('button');
-    b.id = "editarProd";
-    b.innerHTML = "Editar";
+    var inputEditarImg = document.createElement('input');
+    inputEditarImg.type = "submit";
+    inputEditarImg.name = "editarProd";
+    inputEditarImg.value = "Editar";
 
     //Pegamos todo lo de edición
     var div = document.getElementById('productoAEditarAdentro');
@@ -181,16 +183,18 @@ function generaEditProducto(nom, prec, cant, esp, desc){
     h4.innerHTML = "Editar o borrar un producto:";
     div.appendChild(h4);
     div.appendChild(tabla);
-    div.appendChild(b);
+    div.appendChild(inputEditarImg);
 
-    //Agregamos el boton para editar
-    var b1 = document.createElement('button');
-    b1.id = "borrarProd";
-    b1.innerHTML = "Borrar";
+    //Agregamos el boton para borrar
+    var inputBorrarImg = document.createElement('input');
+    inputBorrarImg.type = "submit";
+    inputBorrarImg.name = "borrarProd";
+    inputBorrarImg.value = "Borrar";
+
 
     //Pegamos todo lo de eliminar
-    div2 = document.getElementById('productoBorrar');
-    div2.appendChild(b1);
+    div2 = document.getElementById('productoAEliminarDentro');
+    div2.appendChild(inputBorrarImg);
 
     //Agregamos el boton y el input para subir imágenes
     var b3 = document.createElement('button');
@@ -241,18 +245,28 @@ function generaEditImagenes(img){
         trBut.appendChild(td);
     };
 
-    var b = document.createElement('button');
-    b.id = "borrarImg";
-    b.innerHTML = "Borrar";
-
     var h4 = document.createElement('h4');
-    h4.innerHTML = "Borrar imágenes";
+    h4.innerHTML = "Editar imagenes";
+
+    var inputBorrarImg = document.createElement('input');
+    inputBorrarImg.type = "submit";
+    inputBorrarImg.name = "action";
+    inputBorrarImg.value = "Borrar";
+
+    var inputImgPrincipal = document.createElement('input');
+    inputImgPrincipal.type = "submit";
+    inputImgPrincipal.name = "action";
+    inputImgPrincipal.value = "Establecer como imagen principal";
+
 
     tabla.appendChild(tr);
     tabla.appendChild(trBut);
     div.appendChild(h4);
     div.appendChild(tabla);
-    div.appendChild(b);
+    div.appendChild(inputBorrarImg);
+    div.appendChild(inputImgPrincipal);    
 
 
 }
+
+

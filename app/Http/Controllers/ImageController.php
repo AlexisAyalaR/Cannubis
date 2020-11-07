@@ -24,6 +24,7 @@ class ImageController extends Controller
     		$path = public_path('img');
     		$file -> move($path, $filename);
     		$imagen ->nombre = $filename;
+            $imagen ->principal = 0;
 
             // Seleccionamos el producto
             session_start();
@@ -36,6 +37,7 @@ class ImageController extends Controller
     		return $req;
     		$imagen ->nombre = '';
             $imagen ->idProducto = '';
+            $imagen ->principal = '';
     	}
         
     	$imagen->save();
@@ -43,13 +45,36 @@ class ImageController extends Controller
     	return redirect()->back();
     }
 
+    /* 
+    * Funcion que se encarga de asignar si eliminar o establecer imagen principal dependiendo del input
+    * Parametros: Click de alguno de los inputs
+    * Return: 
+    */
+    public function setAction(Request $req){
+        $nombreImg = $req->input('imagen');
+
+        if ($nombreImg == '') {
+            return redirect()->back();
+        }
+
+        switch ($req->input('action')) {
+
+        case 'Borrar':
+                return ImageController::eliminaImagen($req);
+            break;
+
+        case 'Establecer como imagen principal':
+                return ImageController::setImagenPrincipal($req);
+            break;
+        }
+    }
 
     /* 
     * Funcion que se encarga de eliminar una imágen
     * Parametros: nombre de la imagen
     * Return: 
     */
-    public function eliminaImagen(Request $req){
+    public static function eliminaImagen(Request $req){
         $nombreImg = $req->input('imagen');
         
         try{
@@ -71,5 +96,31 @@ class ImageController extends Controller
         return redirect()->back();
     }
 
+
+    public function setImagenPrincipal(Request $req){
+        $nombreImg = $req->input('imagen');
+
+        session_start();
+        $prod = $_SESSION["currentProduct"];
+        $idProd = producto::getNombreById($prod);
+        $id = json_decode(json_encode($idProd), true);
+
+        $imagenPrincipal = imagen::getPrincipal($id[0]['id']);
+
+        $img = json_decode(json_encode($imagenPrincipal), true);
+
+        $n = count($img);
+
+        if ($n == '0') {
+            imagen::editPrincipal($nombreImg, '1');
+        }else{
+            imagen::editPrincipal($img[0]['nombre'], '0');
+            imagen::editPrincipal($nombreImg, '1');
+        }
+
+        return redirect()->back();
+    }
+
+    
     
 }

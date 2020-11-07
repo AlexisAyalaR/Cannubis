@@ -10,7 +10,7 @@ use DB;
 class imagen extends Model
 {
     protected $table = 'imagen';
-    protected $fillable = ['nombre', 'idProducto'];
+    protected $fillable = ['nombre', 'idProducto', 'principal'];
     /* 
     * Funcion que se encarga de dar la relación entre producto e imágenes
     * Parametros:
@@ -27,7 +27,7 @@ class imagen extends Model
     * Return: Los nombres de las imágenes asociadas al producto
     */
     public static function getImagen($prodId){
-        $nombres = DB::table('imagen')->select('nombre')->where('idProducto', $prodId)->get();
+        $nombres = DB::table('imagen')->where('idProducto', $prodId)->get();
         
         return $nombres;
     }
@@ -56,5 +56,29 @@ class imagen extends Model
 
     }
 
+    /*
+    * Funcion que se encarga de obtener la imagen principal de un producto
+    * Parámetros: Id el producto
+    * Return: 
+    */
+    public static function getPrincipal($idProd){
+        
+        $imagen = DB::table('imagen')
+        ->where('idProducto', $idProd)
+        ->where('principal', '1')
+        ->select('nombre')->get();
+        
+        return $imagen;
+
+    }
+    
+    public static function editPrincipal($nombre, $princ){
+
+        $nombre = DB::table('imagen')
+        ->where('nombre', $nombre)
+        ->limit(1)
+        ->update(array('principal' => $princ));  
+
+    }
 
 }

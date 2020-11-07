@@ -25,7 +25,7 @@
 		<br>
 		<br>
 
-		<form action="">
+		<form action="/getProductos">
     		<input id="bPrueba" type="submit" value="prueba" />
 		</form>
 

@@ -70,8 +70,8 @@
    		<input type="submit" value="Regresa" />
 	</form>
 
-
-
 </body>
+
+
 
 </html>

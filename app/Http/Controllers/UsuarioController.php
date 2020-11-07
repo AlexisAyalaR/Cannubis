@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\usuario;
 
+
 class UsuarioController extends Controller
 {
     function load_product_page(){
@@ -40,6 +41,7 @@ class UsuarioController extends Controller
             return redirect()->back();
     	}
         session(['registraUsuario' => 1]);
+
         return redirect()->back();
     }
 
@@ -68,7 +70,7 @@ class UsuarioController extends Controller
 
         }
         session(['eliminaUsuario' => 1]);
-        return redirect()->back();
+        return redirect()->back()->with('alert', 'Deleted!');
     }
 
     /* 

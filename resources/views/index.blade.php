@@ -36,9 +36,12 @@
 	
 	<h1>Productos</h1>
 
-	<div id="productosIndex">
+	<form action="{{ URL('/usuario')}}" method="get">
+		<div id="productosIndex">
+			
+		</div>
+	</form>
 		
-	</div>
 
 	<br>
 	<br>
