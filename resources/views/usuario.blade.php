@@ -5,6 +5,7 @@
 <head>
 	<title>Cannubis</title>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	<script type="text/javascript" src="js/usuario.js"></script>
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -73,7 +74,7 @@
 				</div>
 		</form>
 
-		<form action="/eliminaProducto" method="post">
+		<form action="/eliminaProducto" method="post" id="formEliminaProd">
 			@csrf
 			<div id="productoAEliminarFuera">
 				<div id="productoAEliminarDentro">

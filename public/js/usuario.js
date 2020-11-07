@@ -189,6 +189,7 @@ function generaEditProducto(nom, prec, cant, esp, desc){
     var inputBorrarImg = document.createElement('input');
     inputBorrarImg.type = "submit";
     inputBorrarImg.name = "borrarProd";
+    inputBorrarImg.id = "borrarProd";
     inputBorrarImg.value = "Borrar";
 
 
@@ -268,5 +269,78 @@ function generaEditImagenes(img){
 
 
 }
+
+/*
+function confirma(){
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "No hay forma de deshacer esta acción",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, elimínalo'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          '¡Borrado!',
+          'El producto se ha borrado exitosamente.',
+          'success'
+        )
+        this.form.submit();
+      }else{
+        return false;
+      }
+    })
+}*/
+
+
+$(document).ready(function(){
+  $(document).on('submit','#formEliminaProd',function(e, params){
+    var localParams = params || {};
+    if (!localParams.send) {
+        e.preventDefault();
+    }
+
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Esta acción no se puede deshacer",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Si, elimínalo",
+        closeOnConfirm: true,
+        imageUrl: '/img/sad.gif',
+  imageWidth: 300,
+  imageHeight: 200,
+  imageAlt: 'Custom image'
+    }).then((result) => {
+    if (result.isConfirmed) {
+        $(e.currentTarget).trigger(e.type, { 'send': true });
+    };
+    });
+  });
+});
+
+/*
+ $('#formEliminaProd').submit(function (e, params) {
+        var localParams = params || {};
+
+        if (!localParams.send) {
+            e.preventDefault();
+        }
+
+    swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        closeOnConfirm: false
+    }, function(isConfirm){
+        if (isConfirm) form.submit();
+    });
+});*/
 
 
